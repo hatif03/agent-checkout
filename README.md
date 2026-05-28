@@ -6,32 +6,7 @@ Built for the [Encode Agentathon](https://www.encodeclub.com/programmes/agentath
 
 ---
 
-## Feature parity with the original template
-
-All capabilities from the upstream Shopify agent-commerce template are preserved in this repo, migrated from Solana/USDC to **Somnia STT**, with additional Somnia-specific features:
-
-| Feature | Original | Agent Checkout |
-|---------|----------|----------------|
-| Merchant onboarding (register store) | Yes | Yes |
-| Product selection & sync from Shopify | Yes | Yes |
-| Orders & payment intents dashboard | Yes | Yes (+ Shannon explorer tx links) |
-| Two-phase HTTP 402 checkout | Yes | Yes (`x402-somnia-stt-v1`) |
-| MCP shopping server (port 3001) | Yes | Yes (+ 2 new tools) |
-| MCP payment server (port 3002) | Yes | Yes (`make_stt_payment`) |
-| On-chain payment verification | Solana USDC | Somnia native STT |
-| Shopify paid order creation | Yes | Yes |
-| Body-hash anti-tampering | Yes | Yes |
-| 15-minute order intent expiry | Yes | Yes |
-| Supabase persistence | Yes | Yes |
-| Natural-language product search | — | **New** (`search_products_nl`) |
-| Address validation before checkout | — | **New** (`validate_shipping`) |
-| STT/USD price oracle | — | **New** (CoinGecko + env fallback) |
-
-The legacy `x402-shopify-commerce-main/` folder has been **removed** — this repo is the single source of truth.
-
----
-
-## Problem & solution
+## Problem & Solution
 
 **Problem:** Shopify stores are built for humans. AI agents need a standard protocol to discover products, initiate checkout, and pay programmatically — without custom integrations per store.
 
@@ -157,6 +132,23 @@ agent-checkout/
 ├── README.md
 └── SUBMISSION.md                 # Hackathon submission guide
 ```
+
+---
+
+## Key features
+
+| Feature | Description |
+|---------|-------------|
+| Merchant onboarding | Connect a Shopify store and configure agent access in ~2 minutes |
+| Product sync | Select variants from Shopify and expose them to agents |
+| Orders dashboard | Monitor agent orders and payment intents with Shannon explorer tx links |
+| Two-phase HTTP 402 checkout | `x402-somnia-stt-v1` scheme with order intents and payment requirements |
+| MCP shopping server | Discovery, NL search, validation, and checkout tools on port 3001 |
+| MCP payment server | Native STT payments via `make_stt_payment` on port 3002 |
+| On-chain verification | viem receipt validation on Somnia before Shopify order creation |
+| Shopify integration | Paid orders created in Shopify Admin after payment confirms |
+| Somnia Agents | STT/USD oracle, address validation, natural-language product search |
+| Security | Body-hash anti-tampering, 15-minute intent expiry, secrets in backend only |
 
 ---
 
