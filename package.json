@@ -1,0 +1,19 @@
+{
+  "name": "agent-checkout",
+  "version": "2.0.0",
+  "description": "Agent-native Shopify checkout on Somnia — HTTP 402 + MCP + Somnia Agents",
+  "private": true,
+  "scripts": {
+    "dev": "pnpm -r --parallel run dev",
+    "build": "pnpm -r run build",
+    "lint": "pnpm -r run lint",
+    "type-check": "pnpm -r run type-check"
+  },
+  "devDependencies": {
+    "typescript": "^5.3.3"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "pnpm": ">=8.0.0"
+  }
+}

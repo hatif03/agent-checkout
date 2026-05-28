@@ -1,0 +1,29 @@
+---
+description: Core project identity and conventions for agent-checkout
+alwaysApply: true
+---
+
+# Agent Checkout
+
+Monorepo for **Agent Checkout** — agent-native Shopify commerce on Somnia (HTTP 402 + MCP).
+
+## Layout
+
+```
+packages/frontend/   # Next.js merchant UI
+packages/backend/    # Express API, MCP, payment server
+```
+
+## Rules
+
+- Project name is **agent-checkout** only. Never reference legacy folder names.
+- Target chain: Somnia Shannon Testnet (chain ID 50312, native STT).
+- Payment scheme: `x402-somnia-stt-v1`.
+- Keep HTTP 402 two-phase checkout and MCP tool contracts stable.
+- Never commit `.env`, Shopify tokens, or private keys.
+- Prefer extending existing files over new abstractions.
+- Minimize scope — focused diffs only.
+
+## Hackathon goals
+
+Showcase Somnia Agents (JSON API, LLM), native STT payments, and MCP agent commerce.

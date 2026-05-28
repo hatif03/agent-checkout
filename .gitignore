@@ -1,1 +1,7 @@
-x402-shopify-commerce-main
+node_modules/
+dist/
+.next/
+.env
+.env.local
+*.log
+.DS_Store

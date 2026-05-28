@@ -1,0 +1,26 @@
+---
+description: MCP and HTTP 402 checkout protocol conventions
+globs: "**/mcp-*.ts,**/x402-*.ts"
+alwaysApply: false
+---
+
+# MCP + HTTP 402 Protocol
+
+## Two-phase checkout
+
+1. **Phase 1** — `POST /x402/checkout` without `X-PAYMENT` → HTTP 402 + `paymentRequirements`
+2. **Phase 2** — same endpoint with `X-PAYMENT` header → verify on-chain → create Shopify order
+
+## MCP tools (shopping server)
+
+- `list_stores`, `get_store_products`, `initiate_checkout`, `finalize_checkout`, `get_order_details`
+- `search_products_nl`, `validate_shipping` (Somnia Agents)
+
+## Payment MCP
+
+- `make_stt_payment` — signs native STT transfer, returns `{ txHash, chainId, timestamp }`
+
+## MCP server names
+
+- `agent-checkout-shopping-agent`
+- `agent-checkout-payment-agent`

@@ -1,0 +1,27 @@
+---
+description: Somnia EVM payment patterns for backend TypeScript
+globs: packages/backend/**/*.ts
+alwaysApply: false
+---
+
+# Somnia EVM Payments
+
+## Network
+
+| | Testnet | Mainnet |
+|---|---------|---------|
+| Chain ID | 50312 | 5031 |
+| Symbol | STT | SOMI |
+| RPC | `https://dream-rpc.somnia.network` | `https://api.infra.mainnet.somnia.network` |
+
+## Implementation
+
+- Use **viem** for wallet client, public client, tx send, receipt verification.
+- Payments are **native STT/SOMI** via `value` in wei — no SPL, no EIP-3009.
+- Payment proof: `{ txHash, chainId, timestamp }`.
+- Amount: USD cart total → STT wei via oracle or `STT_USD_RATE` fallback.
+
+## Forbidden
+
+- No `@solana/*` imports.
+- No `WALLET_SECRET_KEY` (base58). Use `EVM_PRIVATE_KEY` (hex).
